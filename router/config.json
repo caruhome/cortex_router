@@ -1,0 +1,10 @@
+{
+  "routing_rules": ["printer"],
+  "ports": {
+    "touch_dummy": {
+      "dummy": true,
+      "gpio_num": 0
+    },
+    "printer": {}
+  }
+}
