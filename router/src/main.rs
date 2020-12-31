@@ -8,6 +8,7 @@ use cerk_loader_file::{start, ComponentStartLinks};
 use cerk_router_broadcast::ROUTER_BROADCAST;
 use cerk_runtime_threading::THREADING_SCHEDULER;
 use cerk_port_dummies::PORT_PRINTER;
+use cerk_port_mqtt::PORT_MQTT;
 use touch_port::PORT_TOUCH;
 
 fn main() {
@@ -17,6 +18,6 @@ fn main() {
         schedulers: fn_to_links![THREADING_SCHEDULER],
         routers: fn_to_links![ROUTER_BROADCAST],
         config_loaders: fn_to_links![CONFIG_LOADER_FILE],
-        ports: fn_to_links![PORT_TOUCH,PORT_PRINTER],
+        ports: fn_to_links![PORT_TOUCH,PORT_PRINTER,PORT_MQTT],
     });
 }

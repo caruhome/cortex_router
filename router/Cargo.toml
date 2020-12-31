@@ -15,4 +15,5 @@ cerk_router_broadcast = "0.2"
 cerk_loader_file = "0.2"
 cerk_config_loader_file = "0.2"
 cerk_port_dummies = "0.2"
+cerk_port_mqtt = "0.2"
 touch_port = { path = "../touch_port"}
