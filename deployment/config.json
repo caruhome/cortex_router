@@ -1,0 +1,17 @@
+{
+  "routing_rules": [
+    "printer",
+    "mqtt"
+  ],
+  "ports": {
+    "touch": {
+      "gpio_num": 8
+    },
+    "printer": {},
+    "mqtt": {
+      "host": "tcp://localhost:1883",
+      "send_topic": "cerk/all",
+      "send_qos": 1
+    }
+  }
+}

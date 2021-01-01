@@ -1,0 +1,10 @@
+{
+  "scheduler": "THREADING_SCHEDULER",
+  "router": "ROUTER_BROADCAST",
+  "config_loader": "CONFIG_LOADER_FILE",
+  "ports": {
+    "touch": "PORT_TOUCH",
+    "printer": "PORT_PRINTER",
+    "mqtt": "PORT_MQTT"
+  }
+}
