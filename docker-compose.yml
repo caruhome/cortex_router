@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  build-arm7:
+    build: .
+    volumes:
+      - .:/cerk/
+    command: cargo build --target armv7-unknown-linux-gnueabihf --release --bin router
