@@ -46,7 +46,7 @@ fn new_event(id: &InternalServerId, name: String) -> BrokerEvent {
             .source("http://example.com/dummy.sequence-generator")
             .build()
             .unwrap(),
-        args: CloudEventRoutingArgs { delivery_guarantee: DeliveryGuarantee::Unspecified },
+        args: CloudEventRoutingArgs { delivery_guarantee: DeliveryGuarantee::BestEffort},
     }
 )
     

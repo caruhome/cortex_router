@@ -5,6 +5,6 @@
   "ports": {
     "touch": "PORT_TOUCH",
     "printer": "PORT_PRINTER",
-    "mqtt": "PORT_MQTT"
+    "mqtt": "PORT_MQTT_MOSQUITTO"
   }
 }

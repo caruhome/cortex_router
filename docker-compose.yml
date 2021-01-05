@@ -5,4 +5,9 @@ services:
     build: .
     volumes:
       - .:/cerk/
+      - ../mosquitto-client-wrapper:/mosquitto-client-wrapper
+    environment:
+      - MOSQUITTO_CROSS_COMPILER=arm-linux-gnueabihf-
+      - MOSQUITTO_GIT_URL=https://github.com/ce-rust/mosquitto
+      - MOSQUITTO_GIT_HASH=9f834dff9095e6731937d5eac767dbaca46491ac
     command: cargo build --target armv7-unknown-linux-gnueabihf --release --bin router
