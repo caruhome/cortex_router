@@ -5,7 +5,6 @@ services:
     build: .
     volumes:
       - .:/cerk/
-      - ../mosquitto-client-wrapper:/mosquitto-client-wrapper
     environment:
       - MOSQUITTO_CROSS_COMPILER=arm-linux-gnueabihf-
       - MOSQUITTO_GIT_URL=https://github.com/ce-rust/mosquitto
