@@ -1,10 +1,12 @@
 {
   "scheduler": "THREADING_SCHEDULER",
-  "router": "ROUTER_BROADCAST",
+  "router": "ROUTER_RULE_BASED",
   "config_loader": "CONFIG_LOADER_FILE",
   "ports": {
     "touch": "PORT_TOUCH",
-    "printer": "PORT_PRINTER",
-    "mqtt": "PORT_MQTT_MOSQUITTO"
+    "cortex_inbox": "PORT_MQTT_MOSQUITTO",
+    "cortex_outbox": "PORT_MQTT_MOSQUITTO",
+    "cloud_inbox": "PORT_MQTT_MOSQUITTO",
+    "cloud_outbox": "PORT_MQTT_MOSQUITTO"
   }
 }

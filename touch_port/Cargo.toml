@@ -8,8 +8,9 @@ edition = "2018"
 
 [dependencies]
 log = "0.4"
+chrono = "0.4"
+anyhow = "1.0"
 cerk = "0.2"
 cloudevents-sdk = "0.3"
 gpio = "0.4"
 uuid = { version = "0.8", features = ["v4"] }
-chrono = "0.4"

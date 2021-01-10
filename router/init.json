@@ -1,9 +1,0 @@
-{
-  "scheduler": "THREADING_SCHEDULER",
-  "router": "ROUTER_BROADCAST",
-  "config_loader": "CONFIG_LOADER_FILE",
-  "ports": {
-    "touch_dummy": "PORT_TOUCH",
-    "printer": "PORT_PRINTER"
-  }
-}
