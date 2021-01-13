@@ -60,7 +60,7 @@ fn new_event(id: &InternalServerId, name: String) -> BrokerEvent {
             .id(event_id.to_string())
             .ty(name)
             .time(Utc::now())
-            .source("io.caru.device.button")
+            .source("crn:io.caru.device.button")
             .build()
             .unwrap(),
         args: CloudEventRoutingArgs {
