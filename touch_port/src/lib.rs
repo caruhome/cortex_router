@@ -64,7 +64,7 @@ fn new_event(id: &InternalServerId, name: String) -> BrokerEvent {
             .build()
             .unwrap(),
         args: CloudEventRoutingArgs {
-            delivery_guarantee: DeliveryGuarantee::BestEffort,
+            delivery_guarantee: DeliveryGuarantee::AtLeastOnce,
         },
     })
 }
