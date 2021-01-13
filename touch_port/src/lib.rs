@@ -1,8 +1,10 @@
 #[macro_use]
 extern crate log;
 
+use anyhow::Result;
 use cerk::kernel::{
-    BrokerEvent, CloudEventRoutingArgs, Config, ConfigHelpers, DeliveryGuarantee, IncomingCloudEvent,
+    BrokerEvent, CloudEventRoutingArgs, Config, ConfigHelpers, DeliveryGuarantee,
+    IncomingCloudEvent,
 };
 use cerk::runtime::channel::{BoxedReceiver, BoxedSender};
 use cerk::runtime::{InternalServerFn, InternalServerFnRefStatic, InternalServerId};
@@ -11,9 +13,8 @@ use cloudevents::{EventBuilder, EventBuilderV10};
 use gpio::sysfs::SysFsGpioInput;
 use gpio::{GpioIn, GpioValue};
 use std::thread;
-use std::time::{Duration};
+use std::time::Duration;
 use uuid::Uuid;
-use anyhow::{Result};
 
 const DEFAULT_INTERVAL: Duration = Duration::from_millis(100);
 
@@ -25,12 +26,11 @@ struct GpioConfig {
 
 fn parse_config(config: Config) -> Result<GpioConfig> {
     return Ok(GpioConfig {
-        gpio_num:config.get_op_val_u8("gpio_num")?
-            .unwrap()
-            .into(),
-        interval: config.get_op_val_u32("interval_millis")?
+        gpio_num: config.get_op_val_u8("gpio_num")?.unwrap().into(),
+        interval: config
+            .get_op_val_u32("interval_millis")?
             .map(|v| Duration::from_millis(v.into()))
-            .unwrap_or(DEFAULT_INTERVAL)
+            .unwrap_or(DEFAULT_INTERVAL),
     });
 }
 
@@ -41,8 +41,10 @@ fn listen_to_gpio(id: InternalServerId, config: GpioConfig, sender_to_kernel: Bo
         loop {
             let value = gpio.read_value().unwrap();
             match (value, last_value) {
-                (GpioValue::High, GpioValue::Low) => sender_to_kernel.send(new_event(&id, "io.caru.device.button_press.started".into())),
-                (GpioValue::Low, GpioValue::High) => sender_to_kernel.send(new_event(&id, "io.caru.device.button_press.ended".into())),
+                (GpioValue::High, GpioValue::Low) => sender_to_kernel
+                    .send(new_event(&id, "io.caru.device.button_press.started".into())),
+                (GpioValue::Low, GpioValue::High) => sender_to_kernel
+                    .send(new_event(&id, "io.caru.device.button_press.ended".into())),
                 _ => {}
             }
             last_value = value;

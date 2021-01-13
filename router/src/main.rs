@@ -5,19 +5,18 @@ use env_logger::Env;
 
 use cerk_config_loader_file::CONFIG_LOADER_FILE;
 use cerk_loader_file::{start, ComponentStartLinks};
+use cerk_port_mqtt_mosquitto::PORT_MQTT_MOSQUITTO;
 use cerk_router_rule_based::ROUTER_RULE_BASED;
 use cerk_runtime_threading::THREADING_SCHEDULER;
-use cerk_port_mqtt_mosquitto::PORT_MQTT_MOSQUITTO;
 use touch_port::PORT_TOUCH;
 
 fn main() {
-
     env_logger::from_env(Env::default().default_filter_or("debug")).init();
 
     start(ComponentStartLinks {
         schedulers: fn_to_links![THREADING_SCHEDULER],
         routers: fn_to_links![ROUTER_RULE_BASED],
         config_loaders: fn_to_links![CONFIG_LOADER_FILE],
-        ports: fn_to_links![PORT_MQTT_MOSQUITTO,PORT_TOUCH],
+        ports: fn_to_links![PORT_MQTT_MOSQUITTO, PORT_TOUCH],
     });
 }
