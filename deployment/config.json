@@ -1,17 +1,27 @@
 {
-  "routing_rules": [
-    "printer",
-    "mqtt"
-  ],
+  "routing_rules": "{\"cortex_inbox\":{\"Or\":[{\"Exact\":[\"Source\",\"io.caru.cloud\"]},{\"StartsWith\":[\"Type\",\"io.caru.device.button_press\"]}]},\"cloud_inbox\":{\"Exact\":[\"Type\",\"io.caru.alarm\"]}}",
   "ports": {
     "touch": {
-      "gpio_num": 8
+      "gpio_num": 8,
+      "interval": 50
     },
-    "printer": {},
-    "mqtt": {
+    "cortex_inbox": {
       "host": "tcp://localhost:1883",
-      "send_topic": "cerk/all",
-      "send_qos": 1
+      "send_topic": "cortex/inbox"
+    },
+    "cortex_outbox": {
+      "host": "tcp://localhost:1883",
+      "subscribe_topic": "cortex/outbox",
+      "subscribe_qos": 1
+    },
+    "cloud_inbox": {
+      "host": "tcp://localhost:1883",
+      "send_topic": "cloud/inbox"
+    },
+    "cloud_outbox": {
+      "host": "tcp://localhost:1883",
+      "subscribe_topic": "cloud/outbox",
+      "subscribe_qos": 1
     }
   }
 }
